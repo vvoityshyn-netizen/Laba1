@@ -1,0 +1,29 @@
+class Ljudstvo:
+    def __init__(self, nazva, kilkist, seredniy_vik, kontinenty):
+        self.nazva = nazva              # Назва людства
+        self.kilkist = kilkist          # Кількість людей
+        self.seredniy_vik = seredniy_vik# Середній вік
+        self.kontinenty = kontinenty    # Кількість континентів проживання
+
+    def pokazaty_info(self):
+        print("Назва:", self.nazva)
+        print("Кількість людей:", self.kilkist)
+        print("Середній вік:", self.seredniy_vik)
+        print("Континентів:", self.kontinenty)
+
+    def zbilshyty_naselennya(self, kilkist):
+        self.kilkist += kilkist
+
+    def zmenshyty_naselennya(self, kilkist):
+        if kilkist <= self.kilkist:
+            self.kilkist -= kilkist
+        else:
+            print("Помилка: занадто велике значення")
+
+    def seredniy_vik_info(self):
+        if self.seredniy_vik < 30:
+            return "Молоде людство"
+        elif self.seredniy_vik <= 60:
+            return "Доросле людство"
+        else:
+            return "Старіюче людство"
