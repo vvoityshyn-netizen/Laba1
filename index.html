@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 3 App</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+
+    a {
+      cursor: pointer;
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🏠 HOME -->
+  <div id="home" class="page active">
+    <h1>Головна</h1>
+    <a onclick="navigate('page1')">Сторінка 1</a><br>
+    <a onclick="navigate('page2')">Сторінка 2</a>
+  </div>
+
+  <!-- 📄 PAGE 1 -->
+  <div id="page1" class="page">
+    <h1>Сторінка 1</h1>
+
+    <p id="text1"></p>
+
+    <button onclick="setMessage('Ти на сторінці 1 🚀')">
+      Змінити текст
+    </button>
+
+    <br><br>
+    <a onclick="navigate('home')">На головну</a>
+  </div>
+
+  <!-- 📄 PAGE 2 -->
+  <div id="page2" class="page">
+    <h1>Сторінка 2</h1>
+
+    <p id="text2"></p>
+
+    <button onclick="setMessage('Ти на сторінці 2 🔥')">
+      Змінити текст
+    </button>
+
+    <br><br>
+    <a onclick="navigate('home')">На головну</a>
+  </div>
+
+  <script>
+    // 🧠 CONTEXT (глобальний стан)
+    const context = {
+      message: "Привіт 👋"
+    };
+
+    // 🔁 РЕНДЕР
+    function render() {
+      document.getElementById("text1").innerText = context.message;
+      document.getElementById("text2").innerText = context.message;
+    }
+
+    // ✏️ зміна контексту
+    function setMessage(msg) {
+      context.message = msg;
+      render();
+    }
+
+    // 🔀 навігація
+    function navigate(page) {
+      document.querySelectorAll(".page").forEach(p =>
+        p.classList.remove("active")
+      );
+
+      document.getElementById(page).classList.add("active");
+    }
+
+    // перший рендер
+    render();
+  </script>
+
+</body>
+</html>
